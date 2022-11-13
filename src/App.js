@@ -1,24 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import Test from './Test/Parent';
+import Component from './Context/Component';
+import { useState } from 'react';
+import { createContext } from 'react';
+export const ThemeContext = createContext();
 
 function App() {
+  const [dark, setDark] = useState(true);
+  console.log(dark);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <Test />
+    <ThemeContext.Provider value={dark}>
+      <Component />
+    </ThemeContext.Provider>
   );
 }
 
