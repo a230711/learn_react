@@ -3,13 +3,18 @@ import React, {Component} from "react";
 export default class Thisuse extends Component{
     constructor(){
         super()
+        this.state = {
+            value : "",
+        }
     }
-    hanleClick(){
-        console.log('click this button');
+    hanleClick(e){
+        this.setState({
+            value: e.target.value
+        })
     }
     render(){
         return(
-            <button type="button" onClick={()=>{this.hanleClick()}}>Click</button>
+            <input type="text" onInput={(e)=>{this.hanleClick(e)}} value={this.state.value}/>
         )
     }
 }
