@@ -1,4 +1,4 @@
-// import React, { Component } from "react";
+import React, { Component } from "react";
 // // import Button, {Nav} from "./Test/Button";
 // import Thisuse from './Thisuse';
 
@@ -52,28 +52,28 @@
 //   }
 // }
 
-import React, {useState} from "react";
-// import FunctionContextComponent from './FunctionContextComponent';
-import ClassContextComponent from './ClassContextComponent';
+// import React, {useState} from "react";
+// // import FunctionContextComponent from './FunctionContextComponent';
+// import ClassContextComponent from './ClassContextComponent';
 
-export const ThemeContext = React.createContext()
+// export const ThemeContext = React.createContext()
 
-export default function App(){
-  const [darkTheme, setDarkTheme] = useState(true)
+// export default function App(){
+//   const [darkTheme, setDarkTheme] = useState(true)
 
-  function toggleTheme(){
-    setDarkTheme(prevDarkTheme => !prevDarkTheme)
-  }
-  return (
-    <>
-      <ThemeContext.Provider value={darkTheme}>
-        <button onClick={toggleTheme}>Toggle Theme</button>
-        {/* <FunctionContextComponent /> */}
-        <ClassContextComponent />
-      </ThemeContext.Provider>
-    </>
-  )
-}
+//   function toggleTheme(){
+//     setDarkTheme(prevDarkTheme => !prevDarkTheme)
+//   }
+//   return (
+//     <>
+//       <ThemeContext.Provider value={darkTheme}>
+//         <button onClick={toggleTheme}>Toggle Theme</button>
+//         {/* <FunctionContextComponent /> */}
+//         <ClassContextComponent />
+//       </ThemeContext.Provider>
+//     </>
+//   )
+// }
 
 // import React from "react";
 // import FunctionContextComponent from './FunctionContextComponent';
@@ -90,3 +90,38 @@ export default function App(){
 //   )
 // }
 
+
+// import { useState, createContext, Children } from 'react';
+// import {A} from './A';
+// import B from './B';
+
+// export const ThemeContext = createContext(); 
+// function App(){
+
+//   const [ dark, setDark ] = useState(true);
+//   return (  
+//     <>
+//     <ThemeContext.Provider value={{setDark}}>
+//       <A dark={dark}/>
+//       <B dark={dark}/>
+//     </ThemeContext.Provider>
+//     </>
+//   );
+// };
+// export default App;
+
+import { useState } from "react";
+import Input from "./Input";
+
+function App(){
+  const [ updata, setUpdata ] = useState(true)
+  console.log('父組件')
+  return(
+    <>
+      <p onClick={()=>{setUpdata(!updata)}}>Click</p>
+      <Input/>
+    </>
+  )
+}
+
+export default App
