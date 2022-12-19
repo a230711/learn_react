@@ -3,30 +3,51 @@ import React, { Component } from "react";
 import Demo from './Demo';
 import './App.scss'
 
+class Title extends Component{
+  constructor(){
+    super()
+  }
+
+  shouldComponentUpdate(nextProps){
+    console.log(`nextprops:${nextProps.title}`);
+    console.log(`props:${this.props.title}`);
+    if(nextProps.title !== this.props.title){
+      return true
+    }
+    return false
+  }
+
+  render(){
+    return(
+      <h1>{this.props.title}</h1>
+    )
+  }
+}
+
 class App extends Component{
-  constructor(porps){
-    super(porps)
+  constructor(props){
+    super(props)
     this.state = {
-      isIf : false
+      title: 'hello world1',
+      num : 0
     }
   }
 
-  
-  // componentWillMount(){
-  //   console.log('組件將要安裝compontWillMount')
-  // }
-  // componentDidMount(){
-  //   console.log('組件安裝完成compontDidMount')
-  // }
-
   render(){
-    console.log('render')
+    const {title, nun} = this.state;
     return(
-      <div className="app">
-        {this.state.isIf ? <Demo /> : "不宣染"}
-        <p>App</p>
-        <button type="button" className="btn" onClick={()=>this.setState({})}>App</button>
-        <button type="button" onClick={()=>this.setState({isIf: !this.state.isIf})}>Alick</button>
+      <div>
+        <h1>{this.state.num}</h1>
+        <Title title = {title}></Title>
+        <button type="button"
+        onClick={()=>{this.setState({num : this.state.num + 1})}}>
+          Click
+        </button>
+        <button onClick={() => {
+            this.setState({
+                title: Math.random()
+            })
+        }}>change title</button>
       </div>
     )
   }
